@@ -1,11 +1,7 @@
-output "existing_subnet" {
-   value = data.azurerm_subnet.existing_aks_subnet
+output "subnet_address" {
+    value = var.vnet_exists ? data.azurerm_subnet.existing_aks_subnet[0].address_prefixes[0] : azurerm_subnet.aks_subnet[0].address_prefixes[0]
 }
 
-output "existing_subnet_id" {
-    value = var.vnet_exists ? data.azurerm_subnet.existing_aks_subnet[0].id : null
-}
-
-output "new_subnet_id" {
-    value = var.vnet_exists ? null : azurerm_subnet.aks_subnet[0].id
+output "subnet_id" {
+    value = var.vnet_exists ? data.azurerm_subnet.existing_aks_subnet[0].id : azurerm_subnet.aks_subnet[0].id
 }
