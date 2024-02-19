@@ -5,3 +5,7 @@ output "subnet_address" {
 output "subnet_id" {
     value = var.vnet_exists ? data.azurerm_subnet.existing_aks_subnet[0].id : azurerm_subnet.aks_subnet[0].id
 }
+
+output "vnet_id" {
+    value = var.vnet_exists ? data.azurerm_virtual_network.existing_aks_vnet[0].id : azurerm_virtual_network.aks_vnet[0].id
+}
